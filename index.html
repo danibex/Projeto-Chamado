@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe Ti</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="img/banner.png" alt="">
+        <h1>Abertura de Chamado</h1>
+    </header>
+
+    <form action="/add" method="post" id="insert_form">
+       <div>
+           <p>Nome: <input type="text" name="nome" id="nome"></p>
+           <p>Setor: <input type="text" name="setor" id="setor"></p>
+           <p>Chamado:</p> <textarea name="chamado" id="chamado" cols="30" rows="10"></textarea><br>
+           <input id="botao" type="submit" value="Solicitar" name="cadMsg" id="CadMsg" class="btn btn-primary">
+        </div>
+    </form>
+    <footer>&copy; Universo | Anderson | Daniel <a href="https://www.asoec.com.br/" target="_blank"><img src="img/logo.png" alt="" id="logo" height="50px"></a></footer>    
+    <!-- <script src="script.js"></script>
+    -->
+    </body>
+</html>
