@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 
 app.post("/add", function(req, res){
     req.body.conteudo
-    res.send("Texto: "+req.body.titulo+" Conteudo: "+req.body.conteudo)
+    res.send("<h1>Nome: "+req.body.nome+"</h1> <h2>Setor: "+req.body.setor+ "</h2> Chamado: "+ req.body.chamado)
 })
 
 /*
@@ -18,7 +18,8 @@ app.use(express.urlencoded({
 }));
 
 */
+const porta = 5501
 
-app.listen(8081, function(){
-    console.log("Servidor rodando")
+app.listen(porta, function(){
+    console.log(`Servidor rodando na porta ${porta}`)
 })
