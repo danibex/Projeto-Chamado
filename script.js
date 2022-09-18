@@ -1,37 +1,42 @@
+// Importando e instansiando modulo express
 const express = require("express")
 const app = express()
-const bodyParser = require("body-parser")
 
+// Importando e configurando o bodyparse(nativo do node)
+const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.post("/add", function(req, res){
-    req.body.conteudo
-    res.send("<h1>Nome: </h1>"+req.body.nome+"<h2>Setor: </h2>"+req.body.setor+ "<h2>Chamado:</h2> <p>"+ req.body.chamado+"</p>")
+// Configurando sequelize (acesso ao banco de dados)
+const Sequelize = require("sequelize") /* Importando módulo */
+const sequelize = new Sequelize("teste", "root", "Rafael2021$", {
+    host: "localhost", /* Servidor onde está o banco */
+    dialect: "mysql", /* Tipo do banco */
+}) /* Banco de dados(databases), usuario, senha */
+
+  // Mensagens de autinticação e funcionamento
+  sequelize.authenticate().then(function(){
+      console.log("Conectado com sucesso!!!")
+  }).catch(function(erro){
+      console.log("Falha ao se conectar "+erro)
+  })
+
+// Módulo de intermediação entre o node o html
+const handlebars = require("express-handlebars")
+const { json } = require("sequelize")
+  // Config
+    // Template Engine
+      app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
+      app.set("view engine", "handlebars") 
+
+app.get("/cad", function(req, res){
+  res.render("formulario")
 })
 
-app.get("/ola/:nome/:cargo", function(req, res) { /* Parâmetro nome e cargo*/
-  res.send(`${req.params}`) /* Acessando parametros */
+app.post("/add", function(req,res) {
+  res.send("Texto: "+req.body.titulo+"</br>Conteudo: "+req.body.conteudo)
 })
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/index.html")
-})
-
-/* 
-app.get("/ola/:nome/:cargo", function(req, res) {
-  res.send(`Olá ${req.params.nome} do ${req.params.cargo}`) 
-})
- */
-
-/*
-
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
-
-*/
 
 
 
