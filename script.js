@@ -14,6 +14,10 @@ app.get("/ola/:nome/:cargo", function(req, res) { /* Parâmetro nome e cargo*/
   res.send(`${req.params}`) /* Acessando parametros */
 })
 
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html")
+})
+
 /* 
 app.get("/ola/:nome/:cargo", function(req, res) {
   res.send(`Olá ${req.params.nome} do ${req.params.cargo}`) 
