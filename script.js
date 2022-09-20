@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 
 // Configurando sequelize (acesso ao banco de dados)
 const Sequelize = require("sequelize") /* Importando módulo */
-const sequelize = new Sequelize("teste", "root", "32301919", {
+const sequelize = new Sequelize("postapp", "root", "Rafael2021$", {
     host: "localhost", /* Servidor onde está o banco */
     dialect: "mysql", /* Tipo do banco */
 }) /* Banco de dados(databases), usuario, senha */
@@ -34,10 +34,18 @@ app.get("/cad", function(req, res){
 })
 
 app.post("/add", function(req,res) {
-  res.send("Nome: "+req.body.nome+"</br>Setor: "+req.body.setor+"</br>Chamado: "+req.body.chamado)
+  /* res.send("Nome: "+req.body.nome+"</br>Setor: "+req.body.setor+"</br>Chamado: "+req.body.chamado) */
+  Post.create({
+    titulo: req.body.titulo,
+    conteudo: req.body.setor
+  }).then(function(){
+    res.send("Post criado com sucesso!!!")
+  }).catch(function(erro){
+    res.send("Houve um erro:::: "+ erro)
+  })
 })
 
-
+const Post = require("./models/Post")
 
 
 
