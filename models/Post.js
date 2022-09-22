@@ -12,3 +12,4 @@ const Post = db.sequelize.define("postagens", {
 module.exports = Post /* acessar o post através de outros arquivos */
 
 // Post.sync({force: true})
+  
