@@ -1,10 +1,12 @@
 {{!-- <h1>Caminho home</h1> --}}
-<h1>Lista de posts:</h1>
+<h1>Lista de Chamados:</h1><br><a href="http://localhost:5502/cad"><button class="button-29" role="button">Abrir Chamado</button></a>
+<br><br>
 <div id="fundo-branco">
     {{#each posts}}
     <h2>Nome: </h2>{{nome}}
     <h2>Setor: </h2>{{setor}}
     <h3>Descrição: </h3>{{descricao}}
+    <br><br><a href="/deletar/{{id}}"><button class="button-29" role="button">Deletar</button></a>
     <hr>
     {{/each}}
 </div>

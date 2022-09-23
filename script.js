@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 // Configurando sequelize (acesso ao banco de dados)
 const Sequelize = require("sequelize") /* Importando módulo */
-const sequelize = new Sequelize("teste", "daniel", "lab01", {
+const sequelize = new Sequelize(/* "teste" */"postapp", "root", "Rafael2021$", {
     host: "localhost", /* Servidor onde está o banco */
     dialect: "mysql", /* Tipo do banco */
     define: {
@@ -33,6 +33,15 @@ const sequelize = new Sequelize("teste", "daniel", "lab01", {
   })
 })
 
+app.get("/deletar/:id", function(req, res){
+  Post.destroy({where: {'id': req.params.id}}).then(function(){
+    res.send("<h1>Postagem deletada com sucesso</h1>")
+  }).catch(function(erro){
+    res.send("Esta postagem não existe!!!")
+  })
+})
+
+
 // Módulo de intermediação entre o node o html
 const handlebars = require("express-handlebars")
 const { json } = require("sequelize")
@@ -53,7 +62,7 @@ app.post("/add", function(req,res) {
     setor: req.body.setor,
     descricao: req.body.descricao 
   }).then(function(){
-    res.send("Post criado com sucesso!!!")
+    res.send("<h1>Chamado registrado!!!</h1>")
   }).catch(function(erro){
     res.send("Houve um erro:::: "+ erro)
   })

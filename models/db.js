@@ -1,6 +1,6 @@
 // Configurando sequelize (acesso ao banco de dados)
 const Sequelize = require("sequelize") /* Importando módulo */
-const sequelize = new Sequelize("postapp", "daniel", "lab01", {
+const sequelize = new Sequelize("postapp", "root", "Rafael2021$", {
     host: "localhost", /* Servidor onde está o banco */
     dialect: "mysql", /* Tipo do banco */
     query:{raw:true}
