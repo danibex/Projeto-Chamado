@@ -2,6 +2,7 @@
 const express = require("express")
 const app = express()
 
+const Post = require("./models/Post") /* Importando modulo de implementação no banco de dados através do sequelize */
 
 // Importando e configurando o bodyparse(nativo do node)
 const bodyParser = require("body-parser")
@@ -25,8 +26,11 @@ const sequelize = new Sequelize("teste", "daniel", "lab01", {
       console.log("Falha ao se conectar "+erro)
   })
 
-app.get("/", function(req, res){
-  res.render("home")
+  app.get("/", function(req, res){
+  Post.findAll().then(function(posts){
+    console.log(posts)
+    res.render("home", {posts: posts} /* {nome: "victor", sobrenome: "lima"} */) 
+  })
 })
 
 // Módulo de intermediação entre o node o html
@@ -55,7 +59,6 @@ app.post("/add", function(req,res) {
   })
 })
 
-const Post = require("./models/Post")
 
 const porta = 5502
 

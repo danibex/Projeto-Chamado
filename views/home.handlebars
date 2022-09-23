@@ -1,4 +1,10 @@
-<h1>Caminho home</h1>
+{{!-- <h1>Caminho home</h1> --}}
+<h1>Lista de posts:</h1>
 <div id="fundo-branco">
-    <h2>Lista de posts:</h2>
+    {{#each posts}}
+    <h2>Nome: </h2>{{nome}}
+    <h2>Setor: </h2>{{setor}}
+    <h3>Descrição: </h3>{{descricao}}
+    <hr>
+    {{/each}}
 </div>
