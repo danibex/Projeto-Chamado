@@ -1,15 +1,17 @@
 const db = require("./db")
 
 const Post = db.sequelize.define("postagens", {
-    título: {
+    nome: {
         type: db.Sequelize.STRING
     },
-    conteudo: {
+    setor: {
+        type: db.Sequelize.TEXT
+    },
+    descricao: {
         type: db.Sequelize.TEXT
     }
 })
 
 module.exports = Post /* acessar o post através de outros arquivos */
 
-// Post.sync({force: true})
-  
+//Post.sync({force: true})

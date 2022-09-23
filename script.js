@@ -2,6 +2,7 @@
 const express = require("express")
 const app = express()
 
+
 // Importando e configurando o bodyparse(nativo do node)
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended: false}))
@@ -36,11 +37,14 @@ app.get("/cad", function(req, res){
   res.render("formulario")
 })
 
+
+
 app.post("/add", function(req,res) {
   /* res.send("Nome: "+req.body.nome+"</br>Setor: "+req.body.setor+"</br>Chamado: "+req.body.chamado) */
   Post.create({
     nome: req.body.nome,
-    setor: req.body.setor
+    setor: req.body.setor,
+    descricao: req.body.descricao 
   }).then(function(){
     res.send("Post criado com sucesso!!!")
   }).catch(function(erro){
@@ -49,10 +53,6 @@ app.post("/add", function(req,res) {
 })
 
 const Post = require("./models/Post")
-
-
-
-
 
 const porta = 5502
 
