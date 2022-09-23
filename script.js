@@ -25,6 +25,10 @@ const sequelize = new Sequelize("teste", "daniel", "lab01", {
       console.log("Falha ao se conectar "+erro)
   })
 
+app.get("/", function(req, res){
+  res.render("home")
+})
+
 // Módulo de intermediação entre o node o html
 const handlebars = require("express-handlebars")
 const { json } = require("sequelize")
@@ -36,7 +40,6 @@ const { json } = require("sequelize")
 app.get("/cad", function(req, res){
   res.render("formulario")
 })
-
 
 
 app.post("/add", function(req,res) {
